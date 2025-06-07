@@ -1,0 +1,4 @@
+rules:
+  - aws_s3_bucket_versioning、aws_s3_bucket_lifecycle_configuration、aws_s3_bucket_ownership_controls、aws_s3_bucket_server_side_encryption_configuration、aws_s3_bucket_policy、aws_s3_bucket_public_access_blockは必ずaws_s3_bucketとは別に設定します。aws_s3_bucketの中に同梱してはいけません。
+
+
