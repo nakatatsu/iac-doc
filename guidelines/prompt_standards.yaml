@@ -1,0 +1,12 @@
+prompt_standards:
+  - |
+    Prompt templates must include the following. Optional items are discretionary.
+
+    # Required
+    intent:     # 目的(したいこと、なぜやるのか)
+    context:    # 現在地（現状・前提条件）
+    criteria:   # 着地(完了の定義)
+    boundary:   # 制約条件(してはならないこと、できないこと)
+
+    # Optional
+    process:    # 手順（必要に応じ）
