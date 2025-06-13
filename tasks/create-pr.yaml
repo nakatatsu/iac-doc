@@ -1,0 +1,16 @@
+# GitHub PR Creation Quick Reference
+pull_request_creation:
+  intent: 行ったことを十分説明しつつPRを作成してください。
+  context: このブランチで行うべき作業をすべて終えていること
+  criteria: 
+    - プリリクエストが作成成功し、番号を取得できていること
+  boundary:
+    - 指定されたリソースがすべて含まれている。
+    - モジュール仕様書に定義された内容と齟齬がない。
+    - 生成されたコードがdocuments/coding_guidline.yamlのdevelopment_guidelines.coding_standardsに準拠している。
+  process:
+    ```bash
+    gh pr create --title "Add feature" --body "$(printf "## Summary\n- Added user authentication\n- Updated tests\n## Details\n- Added user authentication\n- Updated tests")"
+    ```
+  remarks:
+    - When use multi-line string, No spaces/tabs before or after EOF marker. EOF must be on its own line

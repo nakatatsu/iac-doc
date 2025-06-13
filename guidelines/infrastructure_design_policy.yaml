@@ -1,0 +1,27 @@
+infrastructure_design_policy:
+  principles:
+
+    # Ensuring appropriate levels of reliability and security is the top priority
+    - reliability_and_security:
+        reference: 
+          name: "AWS Well-Architected"
+          url: "https://aws.amazon.com/architecture/well-architected"
+
+    - priorities:
+        order:
+          - "1. Security and reliability"
+          - "2. Operational excellence and performance efficiency"
+          - "3. Cost optimization"
+        note: "All pillars are important and should be implemented with balance."
+    
+    # Implement the following mechanisms for critical resources and data essential to service continuity
+    - safeguards:
+        logging:
+          description: "Provide systems capable of collecting, storing, and managing logs for all critical resources"
+        monitoring:
+          description: "Establish systems to detect anomaly signs or occurrences and issue alerts promptly"
+        recovery:
+          description: "Build systems capable of recovery at the 'Backup & Restore' level of DR strategies"
+          references:
+            - name: "DR Strategy"
+              url: "https://aws.amazon.com/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/"  

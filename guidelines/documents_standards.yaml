@@ -1,2 +1,0 @@
-documents_standards:
-  - When receiving instructions from users that seem to require ongoing compliance rather than one-time handling, add the rule to <PROJECT_ROOT>/documents/new_rules.md. Create a new file if none exists.

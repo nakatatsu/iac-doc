@@ -1,4 +1,3 @@
-
 module_requirements:
   prompt: モジュールの概要説明書([module_name]/README.md)を更新してください。
   constraints:
