@@ -1,0 +1,10 @@
+prompt_template_standards:
+  summary: Prompt templates should follow the guidelines below as possible.
+  required:
+    prompt:   order
+    intent:   What the you want to achieve and why
+    context:  Background, Current situation and assumptions
+    criteria: Definition of completion / success
+    boundary: Constraints (what must not or cannot be done)
+  optional:
+    process:    Steps to follow or precess document, if needed
