@@ -1,5 +1,4 @@
 prompt:   create a pull request
-intent:   What the you want to achieve and why
 context:  Background, Current situation and assumptions
 criteria: The pull request is successfully created and a PR number is obtained.
 boundary: Constraints (what must not or cannot be done)
