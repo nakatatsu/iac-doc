@@ -1,2 +1,2 @@
 rules:
-  - プレフィックスは"/aws/lambda/"を用います
+  - Use prefix "/aws/lambda/"

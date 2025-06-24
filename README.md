@@ -1,4 +1,4 @@
-# MCP IaC Doc
+# IaC Doc
 
 IaC関連ドキュメントの保管場所
 

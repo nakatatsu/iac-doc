@@ -1,3 +1,83 @@
+prompt: Update the module overview document ([module_name]/README.md) in Japanese.
+boundary:
+  - Each section title must be written with a heading marker (`##`).
+  - Section items should be written in list format.
+criteria:
+  - The response is faithful to the separately provided requirements.
+  - A document that complies with the specified format has been created.
+  - The contents of each section are logical and accurate.
+remarks:
+  format: markdown
+  name: Write the module name (English only)
+output_format: |
+  ```markdown
+  # {{  }} モジュール 概要説明書
+
+  ## 目的
+  - [モジュールのゴールを記載]
+
+  ## 要求
+  - [内容1]
+  - [内容2]
+
+  ## 禁止事項
+  - [禁止事項1]
+  - [禁止事項2]
+
+  ## 備考
+  - [備考]
+
+  <!-- BEGIN_TF_DOCS -->
+
+  <!-- END_TF_DOCS -->
+  ```
+example_output: |
+  ```markdown
+  # API モジュール 概要説明書
+
+  ## 目的
+  - REST APIを動作させるためのインフラをAWS上で構築する
+
+  ## 要求
+  - 認証機能を有すること
+  - サーバーレスであること
+  - 下記リソースを利用すること
+    - S3
+    - API Gateway
+    - Lambda
+    - DynamoDB
+    - Cognito
+
+  ## 禁止事項
+  - WAFは別モジュールで扱うため追加しないこと
+  - CMKは不要としているため使わないこと
+
+  <!-- BEGIN_TF_DOCS -->
+
+  <!-- END_TF_DOCS -->
+  ```
+
+
+      ## 目的
+      - 
+
+      ## 期待すること
+      - 全世界からアクセスできること
+      - コンテナをAWS Fargate上で動作させられること
+
+      ## 禁止事項
+      - VPCを作成してはいけない
+      - デプロイの仕組みを含めてはいけない
+
+      <!-- BEGIN_TF_DOCS -->
+
+      <!-- END_TF_DOCS -->
+      
+
+
+
+
+
 module_requirements:
   prompt: モジュールの概要説明書([module_name]/README.md)を更新してください。
   constraints:

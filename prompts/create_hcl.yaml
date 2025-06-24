@@ -1,0 +1,9 @@
+prompt: Generate Terraform code in HCL format.
+intent: Refer to the provided requirements.
+criteria:
+  - All specified resources are included.
+  - There is no block for invoking the module.
+  - iaThe generated code complies with the coding guidline.
+boundary:
+  - Do not add any resources that are not defined in the module specification.
+
