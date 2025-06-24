@@ -1,20 +1,19 @@
 ---
-# 開発ガイドライン
+# Development Guidelines
 #
-# 【凡例】
+# [Format Example]
 #
-#- category: <カテゴリ説明>
-#  sections:
-#    - name: <セクション説明>
+# <category_name>:
+#    <section_name>:
 #      rules:
-#        - id: <カテゴリ名>_<セクション名>_<ルール名> (必須)
-#          body: "<ルール内容>" (必須)
-#          tags: [<タグ>]
-#          refs: [<参考>]
-#          note: [<注記>]
+#        - id: <category>*<section>*\<rule_name> (required)
+#          body: "<Rule description>" (required)
+#          tags: [<tags>]
+#          refs: [<references>]
+#          note: [<notes>]
 #
-# 【備考】
-# - rules.idは<カテゴリ>_<セクション>_<ルール名>で名付けます。必ずスネークケースを用います。カテゴリとセクションにアンダーバー"_"を利用してはいけません
+# [Remarks]
+# - The rules.id must be named as <category>_<section>_<rule_name>. Always use snake_case. Do not use underscores ("_") in category or section names.
 
 - category: プロジェクト情報
   sections:
