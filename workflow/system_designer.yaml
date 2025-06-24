@@ -1,17 +1,10 @@
 task_process_standard:
-  - name: 1. Create Working Branch
-    steps:
-      - "Determine an appropriate branch name based on the work content (e.g., `feat/add-new-module`)"
-      - "Execute `git checkout -b [branch_name]` to create a new branch"
-  - name: 2. Create Module Skeleton
-    steps:
-      - "Execute `make prepare module=<module_name>`"
-  - name: 3. Update Module Overview Documentation ([module_name]/README.md)
+  - name: 1. Update Module Overview Documentation ([module_name]/README.md)
     steps:
       - "The module purpose is provided in the prompt. If not provided, be sure to ask back."
       - "Update the module overview documentation ([module_name]/README.md) based on the module purpose and documents/module_requirements.yaml."
       - "Request confirmation after updating"
-  - name: 4. Update Module Specification ([module_name]/main.tf)
+  - name: 2. Update Module Specification ([module_name]/main.tf)
     steps:
       - "add the module specification ([module_name]/main.tf) based on the README.md."
       - "Request confirmation after updating"

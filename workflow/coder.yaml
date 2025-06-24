@@ -1,41 +1,41 @@
-  - name: 1. Terraform用コードを生成する
+  - name: 1. Generate Terraform Code
     steps:
-      - README.md、main.tfのコメントとCoding Standardsに基づいて、モジュール内にコードを生成する
-  - name: 2. terraform.tfvars.jsonを更新する
+      - Generate code within the module based on README.md, main.tf comments, and Coding Standards
+  - name: 2. Update terraform.tfvars.json
     steps:
-      - モジュールに必要な変数をterraform/modules/[module_name]/terraform.tfvars.jsonに記載する
+      - Document the variables required by the module in terraform/modules/[module_name]/terraform.tfvars.json
   - name: 3. terraform fmt
     steps:
-      - "`terraform/modules/[module_name]/`に移動する。"
-      - "`terraform fmt`を実行する。"
+      - "Navigate to `terraform/modules/[module_name]/`."
+      - "Execute `terraform fmt`."
   - name: 4. terraform init
     steps:
-      - "`terraform init`を実行する。"
-      - エラーがあれば修正しリトライ。エラーがゼロになるまで次に進まないこと
+      - "Execute `terraform init`."
+      - If there are errors, fix them and retry. Do not proceed until errors are zero
   - name: 5. terraform validate
     steps:
-      - "`terraform validate`を実行する。"
-      - エラーがあれば修正しリトライ。エラーがゼロになるまで次に進まないこと
+      - "Execute `terraform validate`."
+      - If there are errors, fix them and retry. Do not proceed until errors are zero
   - name: 6. tflint
     steps:
-      - "`tflint --init --config [repository_root]/.tflint.hcl`を実行する。"
-      - "`tflint --recursive --config [repository_root]/.tflint.hcl`を実行する。"
-      - エラーがあれば修正しリトライ。エラーがゼロになるまで次に進まないこと
+      - "Execute `tflint --init --config [repository_root]/.tflint.hcl`."
+      - "Execute `tflint --recursive --config [repository_root]/.tflint.hcl`."
+      - If there are errors, fix them and retry. Do not proceed until errors are zero
   - name: 7. checkov
     steps:
-      - "`checkov -d . --config-file [repository_root]/.checkov.yml `を実行する。"
-      - エラーがあれば修正しリトライ。エラーがゼロになるまで次に進まないこと
+      - "Execute `checkov -d . --config-file [repository_root]/.checkov.yml`."
+      - If there are errors, fix them and retry. Do not proceed until errors are zero
   - name: 8. terraform plan
     steps:
-      - "terraform planを実行する。"
-      - エラーがあれば修正しリトライ。エラーがゼロになるまで次に進まないこと
+      - "Execute `terraform plan`."
+      - If there are errors, fix them and retry. Do not proceed until errors are zero
   - name: 9. terraform-docs
     steps:
-      - "`terraform-docs markdown . --output-file README.md`を実行する。"
-  - name: 10. 変更をコミットしてプルリクエストを作成
+      - "Execute `terraform-docs markdown . --output-file README.md`."
+  - name: 10. Commit Changes and Create Pull Request
     steps:
-      - "変更をコミットする（`git add . && git commit -m 'feat: [モジュール名] の実装'`）"
-      - "ブランチをプッシュする（`git push origin [ブランチ名]`）"
-      - "GitHubのウェブインターフェースでプルリクエストを作成する"
-      - "レビュアーをアサインし、適切なラベルを設定する"
-tfcmtを利用する
+      - "Commit changes (`git add . && git commit -m 'feat: [module_name] implementation'`)"
+      - "Push branch (`git push origin [branch_name]`)"
+      - "Create pull request using GitHub web interface"
+      - "Assign reviewers and set appropriate labels"
+
