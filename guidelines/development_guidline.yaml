@@ -38,7 +38,7 @@ design:
         body: "Always log important resources and operations"
       - id: design.common.monitoring
         body: "Prepare service monitoring and alerting mechanisms"
-      - id: design_common_backup
+      - id: design.common.backup
         body: "Always backup important resources and data. DR strategy is at backup & restore level"
         refs:
           - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
@@ -47,13 +47,13 @@ design:
       - id: module_design.no_single_wrap
         body: "Do not create modules that only wrap a single resource; define resources directly in the caller when needed"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-      - id: design_moduledesign_group_related
+      - id: module_design.group_related
         body: "Group related resources logically and encapsulate by functional units like network foundation and data layer"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-      - id: design_moduledesign_shallow_hierarchy
+      - id: module_design.shallow_hierarchy
         body: "Keep module hierarchy to 1-2 levels and maintain flat inheritance"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-      - id: design_moduledesign_output_dependency
+      - id: module_design.output_dependency
         body: "Always expose reference values for resources within modules through outputs to make dependencies explicit"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
   provider_configuration:
@@ -61,13 +61,13 @@ design:
       - id: provider_configuration.no_provider_block
         body: "Do not define provider blocks within shared modules (provider configuration should be done only once in root module)"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-      - id: design_providerconfiguration_required_providers
+      - id: provider_configuration.required_providers
         body: "Declare required providers and version constraints in required_providers (e.g., = 4.0)"
         refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 development_environment:
   common:
     rules:
-      - id: developmentenvironment_common_tfvarseditor
+      - id: development_environment.common.tfvars_editor
         body: "Never open repositories containing sensitive information in LLM-integrated editors"
         refs: [https://blog.tricrow.com/entry/ai/diary/2025050816]
 repository_structure:
@@ -128,28 +128,28 @@ repository_structure:
 coding_standards:
   style:
     rules:
-        - id: coding_style_maintf
+        - id: coding_standards.style.main_tf
           body: "Module calls must always be documented in main.tf."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_style_variables
+        - id: coding_standards.style.variables
           body: "Variable blocks must always be documented in variables.tf."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_style_variablesinformation
+        - id: coding_standards.style.variables_information
           body: "Variable blocks and output blocks must always have descriptions."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_style_variablesinformation
+        - id: coding_standards.style.variables_type
           body: "Variable blocks must always have types specified."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_style_variablesuse
+        - id: coding_standards.style.variables_use
           body: "Use variable blocks when there are parameter differences between callers (e.g., CPU 4096 for production, CPU 1024 for development). However, do not use default values."
           tags: [code]
           refs: []
           note: "Default values were completely prohibited because they often caused configuration omissions. AWS published best practices allow default values."
-        - id: coding_style_neverpass
+        - id: coding_standards.style.never_pass
           body: "Do not reference variable blocks as values in output blocks."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
@@ -164,101 +164,101 @@ coding_standards:
               description = "Name of instance"
               value       = var.name # <- Should write like resource.main.name
             }
-        - id: coding_style_locals
+        - id: coding_standards.style.locals
           body: "Locals blocks must be documented in locals.tf."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_style_data
+        - id: coding_standards.style.data
           body: "Avoid overusing data blocks. When using them, place data blocks immediately above the resource blocks that use them."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
           note: "Overuse of data blocks increases references to AWS and slows down terraform execution (https://developer.hashicorp.com/terraform/language/data-sources). AWS guidelines suggest separating data blocks into data.tf when there are too many, but first avoid using them to the extent that separation is needed."
-        - id: coding_style_orderresource
+        - id: coding_standards.style.order_resource
           body: "The order of resource block attributes should be as follows: 1. If present, The count or for_each meta-argument, 2. Resource-specific non-block parameters, 3. Resource-specific block parameters, 4. If required, a lifecycle block, 5. If required, the depends_on parameter. No other constraints apply."
           tags: [code]
           refs: [https://developer.hashicorp.com/terraform/language/style#resource-order]
-        - id: coding_style_ordervariable
+        - id: coding_standards.style.order_variable
           body: "The order of variable block attributes should be as follows: 1. Type, 2. Description, 3. Default (optional), 4. Sensitive (optional), 5. Validation blocks"
           tags: [code]
           refs: [https://developer.hashicorp.com/terraform/language/style#resource-order]
-        - id: coding_style_acronym
+        - id: coding_standards.style.acronym
           body: "Avoid using abbreviations and use formal names instead. (e.g., `[NG] cg [OK] coding guidelines`). However, abbreviations that are used as proper nouns like `RDS` and `id` can be used."
           tags: [code]
           refs: []
-        - id: coding_style_resource
+        - id: coding_standards.style.resource
           body: "Avoid embedded attributes like ingress/egress in security groups, and associate them using dedicated resources like aws_security_group_rule."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
   tags:
     rules:
-        - id: coding_tag_default
+        - id: coding_standards.tags.default
           body: "Set Environment (e.g., development, production) and Service (e.g., ecommerce, auth) in aws_default_tags in root modules."
           tags: [code]
           refs: []
-        - id: coding_tag_tags
+        - id: coding_standards.tags.tags
           body: "Always set Name tags for resources that use Name tags as identifiers."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
-        - id: coding_tag_noduplicate
+        - id: coding_standards.tags.no_duplicate
           body: "Set Environment and Project in default_tags within the provider block. Never set them anywhere else."
           tags: []
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
   tools:
     rules:
-        - id: coding_tool_terraform_fmt
+        - id: coding_standards.tools.terraform_fmt
           body: "Apply terraform fmt to all .tf files."
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_tool_validate
+        - id: coding_standards.tools.validate
           body: "Perform syntax validation with terraform validate."
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_tool_tflint
+        - id: coding_standards.tools.tflint
           body: "Introduce TFLint to detect AWS best practice violations and unused declarations."
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
   naming_conventions:
     rules:
-        - id: coding_naming_snakecase
+        - id: coding_standards.naming_conventions.snake_case
           body: "Use snake_case for resource names in terraform code (e.g., web_server)."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_main
+        - id: coding_standards.naming_conventions.main
           body: 'Name resources that are the only one in a module as main. (e.g., resource "aws_vpc" "main").'
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_type
+        - id: coding_standards.naming_conventions.type
           body: "Name multiple resources in a module according to their purpose (e.g., primary, read_replica)."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_noplural
+        - id: coding_standards.naming_conventions.no_plural
           body: "Do not use plural forms in resource names."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_noduplication
+        - id: coding_standards.naming_conventions.no_duplication
           body: "Do not use names that duplicate resource types in resource names (e.g., aws_instance.ec2_instance)."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_unitsuffix
+        - id: coding_standards.naming_conventions.unit_suffix
           body: "Add units to numeric values (e.g., size_gb, ram_size_gb)."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_unit
+        - id: coding_standards.naming_conventions.unit
           body: "Use MiB/GiB for storage and MB/GB for others as decimal units."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_bool
+        - id: coding_standards.naming_conventions.bool
           body: "Name boolean variables in affirmative form (e.g., enable_external_access)."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
 
-        - id: coding_naming_aws
+        - id: coding_standards.naming_conventions.aws
           body: "Name AWS resource names (Name tags) in the format `[environment]-[project]([-additional_info_if_any])` (e.g., `production-practitioner-api`). In HCL, use variables like `${var.environment}-${var.project}-api`. 'api' is just an example, so be sure to replace it appropriately."
           tags: [code]
           refs: [https://docs.aws.amazon.com/ja_jp/prescriptive-guidance/latest/terraform-aws-provider-best-practices/structure.html]
