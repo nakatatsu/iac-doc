@@ -1,4 +1,4 @@
-module_specification:
+# Obsolete
   prompt: Please create a module specification document.
   constraints:
     - "Content should primarily describe design intent and purpose. Avoid specific configuration values as much as possible, and only use them when absolutely necessary. (e.g., good: select low-cost arm64 instances bad: use t4g.nano)"

@@ -1,41 +1,41 @@
-  - name: 1. Generate Terraform Code
-    steps:
-      - Generate code within the module based on README.md, main.tf comments, and Coding Standards
-  - name: 2. Update terraform.tfvars.json
-    steps:
-      - Document the variables required by the module in terraform/modules/[module_name]/terraform.tfvars.json
-  - name: 3. terraform fmt
-    steps:
-      - "Navigate to `terraform/modules/[module_name]/`."
-      - "Execute `terraform fmt`."
-  - name: 4. terraform init
-    steps:
-      - "Execute `terraform init`."
-      - If there are errors, fix them and retry. Do not proceed until errors are zero
-  - name: 5. terraform validate
-    steps:
-      - "Execute `terraform validate`."
-      - If there are errors, fix them and retry. Do not proceed until errors are zero
-  - name: 6. tflint
-    steps:
-      - "Execute `tflint --init --config [repository_root]/.tflint.hcl`."
-      - "Execute `tflint --recursive --config [repository_root]/.tflint.hcl`."
-      - If there are errors, fix them and retry. Do not proceed until errors are zero
-  - name: 7. checkov
-    steps:
-      - "Execute `checkov -d . --config-file [repository_root]/.checkov.yml`."
-      - If there are errors, fix them and retry. Do not proceed until errors are zero
-  - name: 8. terraform plan
-    steps:
-      - "Execute `terraform plan`."
-      - If there are errors, fix them and retry. Do not proceed until errors are zero
-  - name: 9. terraform-docs
-    steps:
-      - "Execute `terraform-docs markdown . --output-file README.md`."
-  - name: 10. Commit Changes and Create Pull Request
-    steps:
-      - "Commit changes (`git add . && git commit -m 'feat: [module_name] implementation'`)"
-      - "Push branch (`git push origin [branch_name]`)"
-      - "Create pull request using GitHub web interface"
-      - "Assign reviewers and set appropriate labels"
+- name: 1. Generate Terraform Code
+  steps:
+    - Generate code within the module based on README.md, main.tf comments, and Coding Standards
+- name: 2. Update terraform.tfvars.json
+  steps:
+    - Document the variables required by the module in terraform/modules/[module_name]/terraform.tfvars.json
+- name: 3. terraform fmt
+  steps:
+    - "Navigate to `terraform/modules/[module_name]/`."
+    - "Execute `terraform fmt`."
+- name: 4. terraform init
+  steps:
+    - "Execute `terraform init`."
+    - If there are errors, fix them and retry. Do not proceed until errors are zero
+- name: 5. terraform validate
+  steps:
+    - "Execute `terraform validate`."
+    - If there are errors, fix them and retry. Do not proceed until errors are zero
+- name: 6. tflint
+  steps:
+    - "Execute `tflint --init --config [repository_root]/.tflint.hcl`."
+    - "Execute `tflint --recursive --config [repository_root]/.tflint.hcl`."
+    - If there are errors, fix them and retry. Do not proceed until errors are zero
+- name: 7. checkov
+  steps:
+    - "Execute `checkov -d . --config-file [repository_root]/.checkov.yml`."
+    - If there are errors, fix them and retry. Do not proceed until errors are zero
+- name: 8. terraform plan
+  steps:
+    - "Execute `terraform plan`."
+    - If there are errors, fix them and retry. Do not proceed until errors are zero
+- name: 9. terraform-docs
+  steps:
+    - "Execute `terraform-docs markdown . --output-file README.md`."
+- name: 10. Commit Changes and Create Pull Request
+  steps:
+    - "Commit changes (`git add . && git commit -m 'feat: [module_name] implementation'`)"
+    - "Push branch (`git push origin [branch_name]`)"
+    - "Create pull request using GitHub web interface"
+    - "Assign reviewers and set appropriate labels"
 

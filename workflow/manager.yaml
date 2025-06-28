@@ -1,15 +1,15 @@
-  - name: 1. Create Working Branch
-    steps:
-      - "Confirm the github issue is created. If not, create it."
-      - "Confirm the branch is NOT `main`. If it is, create a new branch. Determine an appropriate branch name based on the work content (e.g., `feat/add-new-module`)"
-  - name: 2. Prepare Module Skeleton
-    steps:
-      - "Use script to prepare module skeleton. If not exists, stop and ask where it is."
-  - name: 3. Order to System Designer Agent
-    steps:
-      - "change directory to module dir, and call `yolo` command. "
-      - "order to create README.md using promts/create_readme.yaml"
-  - name: 4. Order to Corder Agent
-    steps:
-      - "change directory to module dir, and call `yolo` command. "
-      - "order to create hcl files using promts/create_hcl.yaml"
+- name: 1. Create Working Branch
+  steps:
+    - "Confirm the github issue is created. If not, create it."
+    - "Confirm the branch is NOT `main`. If it is, create a new branch. Determine an appropriate branch name based on the work content (e.g., `feat/add-new-module`)"
+- name: 2. Prepare Module Skeleton
+  steps:
+    - "Use script to prepare module skeleton. If not exists, stop and ask where it is."
+- name: 3. Order to System Designer Agent
+  steps:
+    - "change directory to module dir, and call `yolo` command. "
+    - "order to create README.md using promts/create_readme.yaml"
+- name: 4. Order to Corder Agent
+  steps:
+    - "change directory to module dir, and call `yolo` command. "
+    - "order to create hcl files using promts/create_hcl.yaml"

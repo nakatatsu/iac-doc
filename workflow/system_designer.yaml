@@ -1,10 +1,9 @@
-task_process_standard:
-  - name: 1. Update Module Overview Documentation ([module_name]/README.md)
-    steps:
-      - "The module purpose is provided in the prompt. If not provided, be sure to ask back."
-      - "Update the module overview documentation ([module_name]/README.md) based on the module purpose and documents/module_requirements.yaml."
-      - "Request confirmation after updating"
-  - name: 2. Update Module Specification ([module_name]/main.tf)
-    steps:
-      - "add the module specification ([module_name]/main.tf) based on the README.md."
-      - "Request confirmation after updating"
+- name: 1. Update Module Overview Documentation ([module_name]/README.md)
+  steps:
+    - "The module purpose is provided in the prompt. If not provided, be sure to ask back."
+    - "Update the module overview documentation ([module_name]/README.md) based on the module purpose and documents/module_requirements.yaml."
+    - "Request confirmation after updating"
+- name: 2. Update Module Specification ([module_name]/main.tf)
+  steps:
+    - "add the module specification ([module_name]/main.tf) based on the README.md."
+    - "Request confirmation after updating"
